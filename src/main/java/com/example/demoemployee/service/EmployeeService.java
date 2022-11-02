@@ -11,6 +11,8 @@ public interface EmployeeService {
 
     void insertEmployee(EmployeeRequest request);
 
+    void updateEmployee(EmployeeRequest request);
+
     void deleteEmployee(Long id);
 
     List<EmployeeResponse> searchEmployee(String keyword);

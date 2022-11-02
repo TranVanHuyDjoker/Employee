@@ -5,7 +5,6 @@ import com.example.demoemployee.controller.dto.response.EmployeeResponse;
 import com.example.demoemployee.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +23,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/insert")
-    ResponseEntity<?> insertEmployee( @RequestBody EmployeeRequest employeeRequest){
+    ResponseEntity<?> insertEmployee(@Valid @RequestBody EmployeeRequest employeeRequest){
         employeeService.insertEmployee(employeeRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/update")
+    ResponseEntity<?> updateEmployee(@Valid @RequestBody EmployeeRequest employeeRequest){
+        employeeService.updateEmployee(employeeRequest );
         return ResponseEntity.ok().build();
     }
 
